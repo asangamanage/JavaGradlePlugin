@@ -1,0 +1,26 @@
+group 'au.com.auspost.devcenter.deployer'
+version '1.0-SNAPSHOT'
+
+apply plugin: 'java-gradle-plugin'
+apply plugin: 'maven'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenLocal()
+    mavenCentral()
+}
+
+gradlePlugin {
+    plugins {
+        dcDeployerPlugin {
+            id = 'au.com.auspost.devcenter.deployer-plugin'
+            implementationClass = 'au.com.auspost.devcenter.deployer.DcDeployerPlugin'
+        }
+    }
+}
+
+dependencies {
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+    compile group: 'org.springframework.boot', name: 'spring-boot', version: "${dependencyVersionAuspostSpringBoot}"
+}
